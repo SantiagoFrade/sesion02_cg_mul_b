@@ -11,6 +11,7 @@ public class SistemaDeCoordenadas2D
     {
         Polar punto2 = new Polar();
         Cartesiana2D punto = new Cartesiana2D();
+        Cartesiana2D punto3= new Cartesiana2D();
         /* Agregar las instrucciones necesarias para que se presente 
         en pantalla la solicitud de los datos y posteriormente el
         usuario los ingrese desde el teclado*/
