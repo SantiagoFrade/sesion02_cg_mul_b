@@ -1,5 +1,4 @@
 package sistemadecoordenadas2d;
-import java.util.HashSet;
 import java.util.Scanner;
 /* Bajo el sistema de coordenadas cartesianas referir un punto
 con sus respectivas propiedades y valores.
@@ -32,42 +31,78 @@ public class SistemaDeCoordenadas2D
 }
  class Cartesiana2D
 {
-     private int x,y;
-     
-     public void setX (int x)
+     private double x,y;
+     //Getter y setters
+     public void setX (double x)
      {
          this.x=x;
      }
-     public void setY (int y)
+     public void setY (double y)
      {
          this.y=y;
      }
-
-    public int getX() 
+    public double getX() 
     {
         return x;
     }
-
-    public int getY()
+    public double getY()
     {
         return y;
     }
-     
-     
+    //Metodo
+    public Cartesiana2D polar_cartesiana2D(double r, double angulo)
+    {
+        Cartesiana2D obj = new Cartesiana2D();
+        x = r*Math.cos(angulo);
+        y = r*Math.sin(angulo);
+        return obj;
+    }
+    //Constructor
+        public Cartesiana2D polar_cartesiana2D(Polar p)
+    {
+        return polar_cartesiana2D(p.getR(), p.getAng());
+    }
 }
 class Polar
 {
-    private float r, ang;
-
+    private double r, ang;
+    //Constructores
+    public Polar()
+    {
+    
+    }
+    public Polar(double radio, double angulo)
+    {
+        this.r=radio;
+        this.ang=angulo;
+    }
+    //Getter y Setters
     public void setR(float r) 
     {
         this.r = r;
     }
-
     public void setAng(float ang) 
     {
         this.ang = ang;
     }
+    public double getR() {
+        return r;
+    }
+
+    public double getAng() 
+    {
+        return ang;
+    }
+    //Metodos
+    public Polar cartesiana2D_polar (double x, double y)
+    {
+        double r=Math.sqrt(x*x + y*y);
+        double ang=Math.atan(y/x);
+        return new Polar(r, ang); 
+    }
     
-    
+    public Polar cartesiana2D_polar (Cartesiana2D c)
+    {
+        return new Polar(c.getX(),c.getY());
+    }
 }
